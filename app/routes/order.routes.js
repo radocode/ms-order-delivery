@@ -8,7 +8,7 @@ module.exports = app => {
     app.get("/orders", orders.findAll);
 
     // Retrieve all ongoing Orders
-    app.get("/orders", orders.findAllOngoing);
+    app.get("/ordersOngoing", orders.findAllOngoing);
 
     // Retrieve a single Order with orderId
     app.get("/orders/:orderId", orders.findOne);
