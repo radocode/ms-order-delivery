@@ -37,6 +37,17 @@ exports.findAll = (req, res) => {
     });
 };
 
+exports.findAllOngoing = (req, res) => {
+    Order.getAllOngoing((err, data) => {
+        if (err)
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving orders."
+            });
+        else res.send(data);
+    });
+};
+
 exports.findOne = (req, res) => {
     Order.findById(req.params.orderId, (err, data) => {
         if (err) {

@@ -6,6 +6,7 @@ const Order = function (order) {
     this.amount = order.amount;
     this.quantity = order.quantity;
     this.status = order.status;
+    this.orderDate = order.orderDate;
 };
 
 Order.create = (newOrder, result) => {
@@ -42,6 +43,20 @@ Order.findById = (orderId, result) => {
 
 Order.getAll = result => {
     sql.query("SELECT * FROM orders", (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+
+        console.log("orders: ", res);
+        result(null, res);
+    });
+};
+
+
+Order.getAllOngoing = result => {
+    sql.query("SELECT * FROM orders where status=1", (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
