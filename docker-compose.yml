@@ -9,8 +9,11 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - TZ=America/Santiago
-      - PORT=8000
+      PORT: "8000"
+      DB_HOST: "mysql"
+      DB_USER: "user"
+      DB_PASSWORD: "password"
+      DB_DB: "db"
   mysql:
     image: mysql:5.7
     networks:
